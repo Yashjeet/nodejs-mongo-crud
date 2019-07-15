@@ -23,7 +23,7 @@ app.use(function (req, res, next) {
 
 // error handler
 app.use(function (err, req, res, next) {
-    if (err.name === 'ValidationError') {
+    if (err & err.name === 'ValidationError') {
         res.status(400)
         messages = []
         Object.keys(err.errors).forEach((fieldName) => {
@@ -35,7 +35,7 @@ app.use(function (err, req, res, next) {
             message: messages
         })
     }
-    else if (err === 404) {
+    else if (err & err === 404) {
         res.status(404)
         res.send({
             status: false,
